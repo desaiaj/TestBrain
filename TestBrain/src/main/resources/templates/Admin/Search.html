@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Sheridan BookStore</title>
+<link rel="stylesheet" href="/static/style.css" th:href="@{/style.css}">
+</head>
+<body>
+	<div class="footer">
+		<img alt="" src="" style="width: 16%;" th:src="@{/images/Sheridan_Library.png}">
+	</div>
+	<div style="margin-top: -18px;">
+		<div>
+			<img alt="" src="" class="himg" th:src="@{/images/Sheridan_Library.png}">
+		</div>
+		<div style="width: 50%;">
+			<h1 style="font-size: 3em">Sheridan Book Store</h1>
+		</div>
+	</div>
+	<div class="header">
+		<ul>
+			<li><a class="active" href="" th:href="@{/}">Home</a></li>
+			<li><a href="" th:href="@{/AddBook}">Add new Book</a></li>
+			<li><a href="" th:href="@{/ViewBooks?page=FullList}">View All Available Books</a></li>
+			<li><a href="" th:href="@{/ViewBooks}">Explore Book stores</a></li>
+			<li><a href="" th:href="@{/}">Search Books</a></li>
+		</ul>
+	</div>
+	<div style="padding-top: 45px;">
+		<h1>Welcome to Sheridan Book Store</h1>
+		<div>
+			<form action="GenerateDummy" method="get">
+				<input type="submit" value="Generate Dummy">
+			</form>
+		</div>
+
+		<div>
+			<div>
+				<h2 style="text-align: left;">Search on All Books</h2>
+			</div>
+			<form action="SearchBook" method="get">
+				<div class="SearchDIV">
+					<label for="BookID">
+						<b> Book ID :</b>
+					</label>
+					<input type="number" min="1" placeholder="Enter Book ID" name="BookID">
+				</div>
+				<div class="SearchDIV">
+					<label for="title">
+						<b> Book Title :</b>
+					</label>
+					<input type="search" placeholder="Enter Book Title" name="title">
+				</div>
+				<div class="SearchDIV">
+					<label for="author">
+						<b> Author : </b>
+					</label>
+					<input type="search" placeholder="Enter Book Author" name="author">
+				</div>
+				<div class="SearchDIV">
+					<label for="CourseCode">
+						<b> Select/Insert Related Course</b>
+					</label>
+					<input type="search" placeholder="Select/Insert Course Related to Book" name="CourseCode"
+						list="Courses" />
+					<datalist id="Courses">
+						<option value="PROG32758">Enterprise Java Development</option>
+						<option value="PROG24178">Object Oriented Programming 2 - Java</option>
+						<option value="PROG10082">Object Oriented Programming 1 - Java</option>
+						<option value="INFO24178">Computer and Network Security</option>
+						<option value="SYST28951">Systems Development Methodologies</option>
+						<option value="SYST26671">Computer Architecture</option>
+						<option value="DBAS27198">Database Design and Implementation</option>
+						<option value="SYST10049">Web Development</option>
+						<option value="TELE13167">Introduction to Data Communications and Networking</option>
+						<option value="DBAS27198">Database Design and Implementation</option>
+						<option value="SYST10199">Web Programming</option>
+					</datalist>
+				</div>
+				<div style="border: 1px solid #f5f5f5;" class="SearchDIV">
+					<div style="border-bottom: 1px solid #f5f5f5">
+						<label for="Qty_Range">
+							<b> Enter Qty_Range :</b>
+						</label>
+					</div>
+					<div style="width: 48%; padding-left: 2px; display: inline-block;">
+						<input type="number" min="0" style="margin-bottom: 3px" placeholder="Min Qty" name="Min_Qty">
+					</div>
+					<div style="width: 48%; padding-right: 2px; display: inline-block;">
+						<input type="number" min="1" style="margin-bottom: 3px" placeholder="Max Qty" name="Max_Qty">
+					</div>
+				</div>
+				<div style="width: 92%">
+					<input type="submit" class="registerbtn" value="Search">
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

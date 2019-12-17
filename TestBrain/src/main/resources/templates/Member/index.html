@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/static/style.css" th:href="@{/css/style.css}">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<div th:fragment="mem">
+		<div class="footer">
+			<img alt="" src="" style="width: 3%;" th:src="@{/images/Sheridan_Library.png}">
+			<summary style="display: inline-block; color: black;">Copyright &copy; &reg; 1999-2018.</summary>
+		</div>
+		<div style="text-align: -webkit-center; margin-top: 7px;">
+			<div>
+				<img alt="" src="" class="himg" th:src="@{/images/Sheridan_Library.png}">
+				<summary class="tag">Lets Check your knowledge</summary>
+			</div>
+			<div style="display: inline-block;">
+				<h1 style="font-size: 3em; font-family: times">TestBrain</h1>
+			</div>
+			<div class="w3-right" style="padding-top: 38px; padding-right: 15px"
+				th:text="'Membership: '+${session.mem}"></div>
+		</div>
+		<div class="header"
+			style="background-color: #4285f4 !important; z-index: 4; margin-top: 12px; position: unset">
+			<ul>
+				<li><a class="active" href="" th:href="@{/}">Home</a></li>
+				<li><a href="#">Profile</a></li>
+				<li><a href="" th:href="@{/SelectCategory}">TestBrain</a></li>
+				<li><a href="" th:href="@{/Membership/Upgrade}">Membership</a></li>
+				<li><a href="" th:href="@{/FeedBack}">Contact Us </a></li>
+				<li class="w3-right"><form th:action="@{/logout}" method="post">
+						<button type="submit" value="logout"
+							class="w3-button w3-text-white w3-hover-none w3-hover-text-black" style="height: 50px;">
+							Log out <span class="fa fa-sign-out"></span>
+						</button>
+					</form></li>
+			</ul>
+		</div>
+	</div>
+
+	<div style="padding: 30px">
+		<div>
+			<h2 style="text-align: left;">
+				<span class="fa fa-search w3-text-grey"></span> Search
+			</h2>
+		</div>
+		<form th:action="@{/SearchCat}" method="get">
+			<div>
+				<label for="Category">
+					<b> Test Category :</b>
+				</label>
+				<input type="text" class="w3-input w3-animate-input" style="width: 30%; display: block;"
+					placeholder="Search Category" name="cat">
+			</div>
+			<input type="submit" class="w3-btn w3-blue" value="Search">
+		</form>
+		<div th:if="${cat}">
+			<table>
+				<tr>
+					<th>Categories found</th>
+				</tr>
+				<tr th:each="c : ${cat}">
+					<td><input type="hidden" name="catId" th:value="${c.catId}"> <a href="#"
+						th:href="@{/GetQuiz/{catId}(catId=${c.catId})}" th:text="${c.category}"></a></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

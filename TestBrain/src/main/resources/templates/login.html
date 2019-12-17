@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style type="text/css">
+.col-blue {
+	background-color: #1947d2;
+	color: white;
+}
+</style>
+</head>
+<body>
+	<div class="w3-container col-blue">
+		<h2>Login</h2>
+	</div>
+	<div th:if="${param.error}" class="alert">Invalid Username/Password</div>
+	<div th:if="${param.logout}" class="alert">logged out successfully</div>
+	<div class="w3-container w3-half w3-margin-top">
+		<form class="w3-container w3-card-4" action="/login" th:action="@{/login}" method="post">
+			<p>
+				<input class="w3-input" type="text" id="username" name="username" autofocus="autofocus"
+					style="width: 90%" required>
+				<label>Name</label>
+			</p>
+			<p>
+				<input class="w3-input" id="password" name="password" type="text" style="width: 90%" required>
+				<label>Password</label>
+			</p>
+
+			<p>
+				<input class="w3-button w3-section col-blue w3-ripple" type="submit" id="login-submit"
+					name="login-submit" value="Login">
+			</p>
+		</form>
+	</div>
+</body>
+</html>

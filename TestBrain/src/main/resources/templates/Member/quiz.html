@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/static/style.css" th:href="@{/css/style.css}">
+<meta charset="ISO-8859-1">
+<title>Quiz</title>
+<style type="text/css">
+.op {
+	width: 1%;
+}
+</style>
+</head>
+<body>
+	<div th:replace="/Member/index.html :: mem"></div>
+	<div style="padding-bottom: 45px;">
+		<form action="#" th:action="@{/Eval}" th:object="${ans}" method="post">
+			<div class="container" style="width: 100%; background-color: #f5f5f5ba">
+				<div>
+					<div class="Main">
+						<table style="padding: 20px;">
+							<d th:each="q,i : ${Quiz}">
+							<tr>
+								<!-- 					<td th:if="${q}==null" colspan="5">No data available</td> -->
+								<td colspan="4" th:text="${i.count} +') '+ ${q.que}"></td>
+							</tr>
+							<tr>
+								<td class="op"><input type="radio" class="w3-radio"
+										th:name="'ans'+${i.count}" th:value="${q.opt1}"></td>
+								<td th:text="${q.opt1}"></td>
+								<td class="op"><input type="radio" onclick="answer('opt2',this);" class="w3-radio"
+										th:name="'ans'+${i.count}" th:value="${q.opt3}"></td>
+								<td th:text="${q.opt3}"></td>
+							</tr>
+							<tr>
+								<td class="op"><input type="radio" class="w3-radio" th:name="'ans'+${i.count}"
+										th:value="${q.opt2}"></td>
+								<td th:text="${q.opt2}"></td>
+								<td class="op"><input type="radio" class="w3-radio" th:name="'ans'+${i.count}"
+										th:value="${q.opt4}"></td>
+								<td th:text="${q.opt4}"></td>
+<!-- 								<input type="hidden" name="ans" th:value="${q.ans}"> -->
+							</tr>
+							<tr>
+								<td colspan="4"><hr></td>
+							</tr>
+							</d>
+						</table>
+					</div>
+				</div>
+				<input type="submit" class="w3-btn w3-block w3-green" value="Submit Test">
+			</div>
+		</form>
+	</div>
+</body>
+</html>

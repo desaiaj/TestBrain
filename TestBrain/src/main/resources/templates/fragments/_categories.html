@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<div th:fragment="frmCat(action)">
+		<form action="#" th:action="${action}" th:object="${cat}" method="post">
+			<div class="container" style="width: 100%; background-color: #f5f5f5ba">
+				<h1>[[${btn}]] Categories</h1>
+				<input type="hidden" th:field="*{catId}">
+				<label for="title">
+					<b> Category:</b>
+				</label>
+				<input type="text" placeholder="Enter Category" th:field="*{category}" required>
+				<div style="margin-bottom: 22px;">
+					<label>
+						<b>Available to users? : </b>
+					</label>
+					<label>
+						<input type="radio" class="w3-radio" value="1" th:field="*{enabled}">
+						<label>Yes</label>
+					</label>
+					<label>
+						<input type="radio" class="w3-radio" value="0" th:field="*{enabled}">
+						<label>No</label>
+					</label>
+				</div>
+
+				<input type="submit" class="w3-btn w3-block w3-green" th:value="${btn}">
+			</div>
+		</form>
+	</div>
+	
+	<div class="Main" th:fragment="cats">
+		<table border="1">
+			<tr>
+				<th>ID</th>
+				<!-- <th>Book ID</th> -->
+				<th>Category</th>
+				<!-- 				<th>#Questions</th> -->
+				<th>Is Available?</th>
+				<th colspan="2">Action</th>
+			</tr>
+			<tr th:each="c : ${list}">
+				<!-- 				<td th:if="${c}==null" colspan="5">No data available</td> -->
+				<!-- 				<td th:text="${i.count}"></td> -->
+				<td th:text="${c.catId}"></td>
+				<td th:text="${c.category}"></td>
+				<td th:text="(${c.enabled}==1)?'Yes':'No'"></td>
+				<td><a href="" th:href="@{/Categories/{id}(id=${c.catId})}">Edit</a></td>
+				<td><a href="" th:href="@{/Delete/Category/{catId}(catId=${c.catId})}">Delete</a></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

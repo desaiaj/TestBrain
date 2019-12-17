@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html th:xmlns="www.thymeleafe.org">
+<head th:replace="/Admin/index.html :: head"></head>
+<head th:replace="/fragments/_Reg.html :: Head"></head>
+<style>
+.active {
+	background-color: #ffffff00 !important;
+}
+</style>
+<body>
+	<div th:replace="/Admin/index.html :: format"></div>
+	<div class="w3-main" style="margin-left: 300px; margin-top: 43px; text-align: -webkit-center;">
+		<div style="width: 99%;">
+			<div class="container"
+				style="text-align: -webkit-center; width: 100%; background-color: #f5f5f5ba">
+				<div style="width: 50%; margin-top: 4px;" th:fragment="Register">
+					<div class="signup__container">
+						<div class="card">
+							<h5 class="card-header primary-color white-text text-center py-6">
+								<strong>Register</strong>
+							</h5>
+							<!--Card content-->
+							<div class="card-body px-lg-5 pt-0">
+								<!-- Form -->
+								<form class="text-center" method="post" th:action="@{/Register}" th:object="${u}"
+									style="color: #757575;" action="#">
+
+									<div class="form-row">
+										<!-- 										<div class="w3-margin-top"> -->
+										<!-- 											<label for="userId"> -->
+										<!-- 												<b>Select User Type</b> -->
+										<!-- 											</label> -->
+										<!-- 											<select class="w3-select" style="padding-left: 9px;" th:field="*{catId}"> -->
+										<!-- 												<option th:each="c : ${cats}" th:value="${c.catId}" th:text="${c.category}"></option> -->
+										<!-- 											</select> -->
+										<!-- 										</div> -->
+										<div class="col">
+											<!-- First name -->
+											<div class="md-form">
+												<input type="text" th:field="*{Name}" id="materialRegisterFormFirstName"
+													class="form-control" required>
+												<label for="materialRegisterFormFirstName">First name</label>
+											</div>
+										</div>
+										<div class="col">
+											<!-- Last name -->
+											<div class="md-form">
+												<input type="text" th:field="*{lName}" id="materialRegisterFormLastName"
+													class="form-control">
+												<label for="materialRegisterFormLastName">Last name</label>
+											</div>
+										</div>
+									</div>
+
+									<!-- E-mail -->
+									<div class="md-form mt-0">
+										<input type="email" th:field="*{email}" id="materialRegisterFormEmail"
+											class="form-control" required>
+										<label for="materialRegisterFormEmail">E-mail</label>
+										<small id="materialRegisterFormEmailHelpBlock" class="form-text text-muted"> Will
+											be used as your UserName </small>
+									</div>
+
+									<!-- Password -->
+									<div class="md-form">
+										<input type="password" th:field="*{encrytedPassword}" id="materialRegisterFormPassword"
+											class="form-control" aria-describedby="materialRegisterFormPasswordHelpBlock" required>
+										<label for="materialRegisterFormPassword">Password</label>
+										<small id="materialRegisterFormPasswordHelpBlock" class="form-text text-muted"> At
+											least 8 characters and 1 digit </small>
+									</div>
+
+									<input type="submit" style="box-shadow: none; width: 100%;" class="btn btn-primary"
+										value="Create User">
+									<hr>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<hr>
+		<div style="padding-left: 16px; text-align: left; width: 100%;">
+			<form th:action="@{/Admin/SearchUsers}" style="display: -webkit-inline-box;" method="get">
+				<div style="">
+					<label for="User">
+						<b> User name :</b>
+					</label>
+					<input type="text" class="w3-input" style="width: 70%;" placeholder="Search by name"
+						name="name">
+				</div>
+				<div style="">
+					<label for="User">
+						<b> Email :</b>
+					</label>
+					<input type="text" class="w3-input" style="width: 70%;" placeholder="Search by Email"
+						name="email">
+				</div>
+				<div>
+					<input type="submit" class="w3-btn w3-blue w3-padding" value="Search">
+				</div>
+			</form>
+		</div>
+		<div class="Main">
+			<table border="1">
+				<tr>
+					<th>ID</th>
+					<th>Full Name</th>
+					<th>Email</th>
+					<th>Membership</th>
+					<th colspan="2">Action</th>
+				</tr>
+				<tr th:each="u : ${users}">
+					<!-- 					<td th:if="${q}==null" colspan="5">No data available</td> -->
+					<td th:text="${u.userId}"></td>
+					<td th:text="${u.Name}"></td>
+					<td th:text="${u.email}"></td>
+					<td th:text="${u.membership}"></td>
+					<!-- 					<td><a href="" th:href="@{/Users/{id}(id=${u.userId})}">Edit</a></td> -->
+					<td><a href="" th:href="@{/Delete/User/{id}(id=${u.userId})}">Delete</a></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<script type="text/javascript" th:replace="/Admin/index.html :: js"></script>
+</body>
+</html>

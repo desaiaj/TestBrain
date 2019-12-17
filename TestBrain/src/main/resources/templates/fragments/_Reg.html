@@ -1,0 +1,152 @@
+
+<head th:fragment="Head">
+
+<link rel="stylesheet"
+	href="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/css/compiled-4.10.0.min.css">
+<link rel="stylesheet" type="text/css"
+	href="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/css/mdb-plugins-gathered.min.css">
+
+<style type="text/css">
+@
+-webkit-keyframes chartjs-render-animation {
+	from {opacity: 0.99
+}
+
+to {
+	opacity: 1
+}
+
+}
+@
+keyframes chartjs-render-animation {
+	from {opacity: 0.99
+}
+
+to {
+	opacity: 1
+}
+
+}
+.chartjs-render-monitor {
+	-webkit-animation: chartjs-render-animation 0.001s;
+	animation: chartjs-render-animation 0.001s;
+}
+
+.waves-input-wrapper {
+	width: 100%;
+	display: block;
+}
+
+.h:hover {
+	background: #2196F3 !important;
+	color: white !important;
+}
+
+.fa {
+	padding: 10px;
+	width: 36px;
+}
+
+.fa:hover {
+	opacity: 0.7;
+}
+
+.fa-facebook {
+	background: #3B5998;
+	color: white;
+}
+
+.fa-twitter {
+	background: #55ACEE;
+	color: white;
+}
+
+.fa-google {
+	background: #dd4b39;
+	color: white;
+}
+
+.fa-linkedin {
+	background: #007bb5;
+	color: white;
+}
+</style>
+<script type="text/javascript"
+	src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/js/compiled-4.10.0.min.js"></script>
+<script type="text/javascript"
+	src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/js/plugins/mdb-plugins-gathered.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<div style="width: 49%; float: right;" th:fragment="Register">
+	<div class="signup__container">
+		<div class="card">
+			<h5 class="card-header primary-color white-text text-center py-6">
+				<strong>Register</strong>
+			</h5>
+			<!--Card content-->
+			<div class="card-body px-lg-5 pt-0">
+
+				<!-- Form -->
+				<form class="text-center" method="post" th:action="@{/Register}" th:object="${u}"
+					style="color: #757575;" action="#">
+
+					<div class="form-row">
+						<div class="col">
+							<!-- First name -->
+							<div class="md-form">
+								<input type="text" th:field="*{Name}" id="materialRegisterFormFirstName"
+									class="form-control" required>
+								<label for="materialRegisterFormFirstName">First name</label>
+							</div>
+						</div>
+						<div class="col">
+							<!-- Last name -->
+							<div class="md-form">
+								<input type="text" th:field="*{Name}" id="materialRegisterFormLastName" class="form-control">
+								<label for="materialRegisterFormLastName">Last name</label>
+							</div>
+						</div>
+					</div>
+
+					<!-- E-mail -->
+					<div class="md-form mt-0">
+						<input type="email" th:field="*{email}" id="materialRegisterFormEmail" class="form-control"
+							required>
+						<label for="materialRegisterFormEmail">E-mail</label>
+						<small id="materialRegisterFormEmailHelpBlock" class="form-text text-muted"> Will be
+							used as your UserName </small>
+					</div>
+
+					<!-- Password -->
+					<div class="md-form">
+						<input type="password" th:field="*{encrytedPassword}" id="materialRegisterFormPassword"
+							class="form-control" aria-describedby="materialRegisterFormPasswordHelpBlock" required>
+						<label for="materialRegisterFormPassword">Password</label>
+						<small id="materialRegisterFormPasswordHelpBlock" class="form-text text-muted"> At
+							least 8 characters and 1 digit </small>
+					</div>
+
+					<!-- 					<div class="md-form"> -->
+					<!-- 						<input type="password" id="materialRegisterFormConfPassword" class="form-control" -->
+					<!-- 							aria-describedby="materialRegisterFormConfPasswordHelpBlock" required> -->
+					<!-- 						<label for="materialRegisterFormConfPassword">Confirm Password</label> -->
+					<!-- 						<small id="materialRegisterFormConfPasswordHelpBlock" class="form-text text-muted"> -->
+					<!-- 							Re-type above Password </small> -->
+					<!-- 					</div> -->
+
+					<!-- Sign up button -->
+					<input type="submit" style="box-shadow: none; width: 100%;" class="btn btn-primary"
+						value="Sign up">
+
+					<!-- Social register -->
+					<p>or sign up with:</p>
+
+					<a href="#" class="fa fa-facebook"></a> <a href="#" class="fa fa-twitter"></a> <a href="#"
+						class="fa fa-google"></a> <a href="#" class="fa fa-linkedin"></a>
+					<hr>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="/static/style.css" th:href="@{/css/style.css}">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+input {
+	margin: 0px !important;
+}
+</style>
+<body>
+	<div style="margin-top: 30px;">
+		<div th:replace="fragments/_Temp.html::outer"></div>
+	</div>
+	<div style="padding-top: 70px;">
+		<div style="width: 100%; text-align: -webkit-center;">
+			<div class="" style="width: 50%">
+				<form action="" th:action="@{/SendMail}" th:object="${m}" method="post"
+					class="w3-container w3-card-4 w3-light-grey w3-text-green w3-margin">
+					<h2 class="w3-center">Contact Us</h2>
+
+					<div class="w3-row w3-section">
+						<div class="w3-col" style="width: 50px">
+							<i class="w3-xxlarge fa fa-user"></i>
+						</div>
+						<div class="w3-rest" style="width: 45%; display: inline-block;">
+							<input class="w3-input w3-border" name="first" th:field="*{name}" type="text"
+								placeholder="First Name">
+						</div>
+						<div class="w3-rest" style="width: 45%; display: inline-block;">
+							<input class="w3-input w3-border" name="last" type="text" th:field="*{name}"
+								placeholder="Last Name">
+						</div>
+					</div>
+
+					<div class="w3-row w3-section">
+						<div class="w3-col" style="width: 50px">
+							<i class="w3-xxlarge fa fa-envelope-o"></i>
+						</div>
+						<div class="w3-rest">
+							<input class="w3-input w3-border" name="email" th:field="*{from}" type="text"
+								placeholder="Email">
+						</div>
+					</div>
+
+					<div class="w3-row w3-section">
+						<div class="w3-col" style="width: 50px">
+							<i class="w3-xxlarge fa fa-file"></i>
+						</div>
+						<div class="w3-rest">
+							<input class="w3-input w3-border" name="Subject" type="text" th:field="*{subject}"
+								placeholder="Subject">
+						</div>
+					</div>
+
+					<div class="w3-row w3-section">
+						<div class="w3-col" style="width: 50px">
+							<i class="w3-xxlarge fa fa-pencil"></i>
+						</div>
+						<div class="w3-rest">
+							<textarea class="w3-input w3-border" th:field="*{msg}" placeholder="Enter Message..."></textarea>
+						</div>
+					</div>
+
+					<p class="w3-center">
+						<button type="submit" class="w3-button w3-section w3-green w3-ripple">
+							Send <i class="fa fa-paper-plane"></i>
+						</button>
+					</p>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

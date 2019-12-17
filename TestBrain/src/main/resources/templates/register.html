@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<title>Register</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/static/style.css" th:href="@{/css/style.css}">
+<head th:replace="fragments/_Reg.html :: Head"></head>
+<style>
+.active {
+	background-color: #ffffff00 !important;
+}
+</style>
+<body style="border: none;">
+	<div>
+		<div class="footer">
+			<img alt="" src="" style="width: 5%;" th:src="@{/images/Sheridan_Library.png}">
+			<summary style="display: inline-block; color: black; float: right;">Copyright &copy;
+				&reg; 1999-2018.</summary>
+		</div>
+		<div>
+			<div>
+				<img alt="" src="" class="himg" th:src="@{/images/Sheridan_Library.png}">
+				<summary class="tag">Lets Check your knowledge</summary>
+			</div>
+			<div style="text-align: -webkit-center;">
+				<h1 style="font-size: 3em">TestBrain</h1>
+			</div>
+		</div>
+		<div class="header"
+			style="background-color: #4285f4 !important; margin-top: 50px; z-index: 4; position: unset;">
+			<ul>
+				<li><a href="" th:href="@{/}">Home</a></li>
+				<li><a href="" th:href="@{/Member}">Member</a></li>
+				<li><a href="" th:href="@{/Admin/}">Admin</a></li>
+				<li><a href="" th:href="@{/login}">Login </a></li>
+				<li><a href="" style="background-color: #4CAF50" th:href="@{/Register}">Register User </a></li>
+				<li><a href="" th:href="@{/FeedBack}">Contact Us </a></li>
+			</ul>
+		</div>
+	</div>
+	<div th:replace="fragments/_Reg.html::Register"></div>
+</body>
+</html>

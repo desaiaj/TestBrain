@@ -1,0 +1,38 @@
+
+<div th:fragment="template">
+	<div th:fragment="outer">
+		<div class="footer">
+			<img alt="" src="" style="width: 5%;" th:src="@{/images/Sheridan_Library.png}">
+			<summary style="display: inline-block; color: black; float: right;">Copyright &copy;
+				&reg; 1999-2018.</summary>
+		</div>
+		<div style="margin-top: -23px;">
+			<div>
+				<img alt="" src="" class="himg" th:src="@{/images/Sheridan_Library.png}">
+				<summary class="tag">Lets Check your knowledge</summary>
+			</div>
+			<div style="width: 50%;">
+				<h1 style="font-size: 3em">TestBrain</h1>
+			</div>
+		</div>
+		<div class="header" style="background-color: #4285f4 !important; z-index: 4; margin-left: -8px;">
+			<ul>
+				<li><a class="active" href="" th:href="@{/}">Home</a></li>
+				<li><a href="" th:href="@{/Member}">Member</a></li>
+				<li><a href="" th:href="@{/Admin/}">Admin</a></li>
+				<li><a href="" th:href="@{/login}">Login </a></li>
+				<li><a href="" th:href="@{/Register}">Register User </a></li>
+				<li><a href="" th:href="@{/FeedBack}">Contact Us </a></li>
+			</ul>
+		</div>
+	</div>
+	<div style="padding-top: 45px;">
+		<h1>Welcome to Brain Test Center</h1>
+		<div>
+			<form th:action="@{/GenerateDummy}" method="POST">
+				<input type="submit" value="Generate Dummy">
+			</form>
+		</div>
+	</div>
+</div>
+</html>

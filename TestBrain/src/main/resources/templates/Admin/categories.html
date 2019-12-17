@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html th:xmlns="www.thymeleafe.org">
+<head th:replace="/Admin/index.html :: head"></head>
+<body class="w3-light-grey">
+	<div th:replace="/Admin/index.html :: format"></div>
+	<div class="w3-main" style="margin-left: 300px; margin-top: 43px;">
+		<div th:replace="/fragments/_categories.html :: frmCat(${action})"></div>
+		<hr style="border: 1px solid #ffffff; margin-bottom: 20px; margin-top: 0">
+		<div style="padding-left: 16px;">
+			<form th:action="@{/Admin/SearchCategories}" method="get">
+				<div style="width: 100%">
+					<label for="Category">
+						<b> Test Category :</b>
+					</label>
+					<input type="text" class="w3-input" style="width: 36%;" placeholder="Search Category"
+						name="cat">
+					<input type="submit" class="w3-btn w3-blue w3-padding" value="Search">
+				</div>
+			</form>
+		</div>
+		<div th:replace="/fragments/_categories.html :: cats"></div>
+	</div>
+	<script type="text/javascript" th:replace="/Admin/index.html :: js"></script>
+</body>
+</html>

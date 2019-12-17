@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/static/style.css" th:href="@{/css/style.css}">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<div th:replace="/Member/index.html :: mem"></div>
+
+	<div style="padding-top: 45px;">
+		<form action="#" th:action="@{/Quiz}" th:object="${c}" method="post">
+			<div class="container" style="width: 100%; background-color: #f5f5f5ba">
+				<div class="w3-margin-top">
+					<label for="catId">
+						<b>Select Category</b>
+					</label>
+					<select class="w3-select" style="padding-left: 9px;" th:field="*{catId}">
+						<option th:each="cat : ${cats}" th:value="${cat.catId}" th:text="${cat.category}"></option>
+					</select>
+				</div>
+				<input type="submit" class="w3-btn w3-block w3-green" value="Start Quiz">
+			</div>
+		</form>
+	</div>
+</body>
+</html>

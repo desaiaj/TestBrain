@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="/static/style.css" th:href="@{/css/style.css}">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+</head>
+
+<body>
+	<div th:replace="/Member/index.html :: mem"></div>
+	<div style="padding-top: 45px;">
+		<div class="w3-row-padding">
+			<div class="w3-third w3-margin-bottom">
+				<ul class="w3-ul w3-border w3-center w3-hover-shadow">
+					<li style="float: none;" class="w3-black w3-xlarge w3-padding-32">Basic</li>
+					<li style="float: none;" class="w3-padding-16">Access up to <b>10</b> quiz
+					</li>
+					<li style="float: none;" class="w3-padding-16">Access up to <b>10</b> Tutorials
+					</li>
+					<li style="float: none;" class="w3-padding-16"><b>No</b> Support</li>
+					<li style="float: none;" class="w3-padding-16">
+						<h2 class="w3-wide">$ 10</h2> <span class="w3-opacity">per month</span>
+					</li>
+					<li style="float: none;" class="w3-light-grey w3-padding-24">
+						<div id="paypal-button-container1"></div>
+					</li>
+				</ul>
+			</div>
+
+			<div class="w3-third w3-margin-bottom">
+
+				<ul class="w3-ul w3-border w3-center w3-hover-shadow">
+					<li style="float: none;" class="w3-green w3-xlarge w3-padding-32">Pro</li>
+					<li style="float: none;" class="w3-padding-16">Access up to <b>30</b> quiz
+					</li>
+					<li style="float: none;" class="w3-padding-16">Access up to <b>25</b> Tutorials
+					</li>
+					<li style="float: none;" class="w3-padding-16"><b>Endless</b> Support</li>
+					<li style="float: none;" class="w3-padding-16">
+						<h2 class="w3-wide">$ 25</h2> <span class="w3-opacity">per month</span>
+					</li>
+					<li style="float: none;" class="w3-light-grey w3-padding-24">
+						<div id="paypal-button-container2"></div>
+					</li>
+				</ul>
+			</div>
+
+			<div class="w3-third w3-margin-bottom">
+				<ul class="w3-ul w3-border w3-center w3-hover-shadow">
+					<li style="float: none;" class="w3-black w3-xlarge w3-padding-32">Premium</li>
+					<li style="float: none;" class="w3-padding-16"><b>No Limit</b> on quiz</li>
+					<li style="float: none;" class="w3-padding-16"><b>No Limit</b> on Tutorials</li>
+					<li style="float: none;" class="w3-padding-16"><b>Endless</b> Support</li>
+					<li style="float: none;" class="w3-padding-16">
+						<h2 class="w3-wide">$50</h2> <span class="w3-opacity">per month</span>
+					</li>
+					<li style="float: none;" class="w3-light-grey w3-padding-24">
+						<div id="paypal-button-container3"></div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<script
+		src="https://www.paypal.com/sdk/js?client-id=AWiwAjOIbxUmIfkUsh3DhOS_lDQeWxIYW_hFw3g5m3aTN2KxkiedhUjRhEWvXcc1YtjniMumzP3KttZs&currency=CAD">
+		// Required. Replace SB_CLIENT_ID with your sandbox client ID.
+	</script>
+
+	<script>
+		paypal.Buttons(
+				{
+					createOrder : function(data, actions) {
+						return actions.order.create({
+							purchase_units : [ {
+								amount : {
+									value : '10.0',
+									currency_code : 'CAD'
+								}
+							} ]
+						});
+					},
+					onApprove : function(data, actions) {
+						return actions.order.capture().then(
+								function(details) {
+									alert('Transaction completed by '
+											+ details.payer.name.given_name);
+									// Call your server to save the transaction
+									return fetch('/Membership/Basic', {
+										method : 'post',
+										headers : {
+											'content-type' : 'application/json'
+										},
+										body : JSON.stringify({
+											orderID : data.orderID,
+											m : 'Basic'
+										})
+									});
+								});
+					}
+				}).render('#paypal-button-container1');
+	</script>
+
+	<script>
+		paypal.Buttons(
+				{
+					createOrder : function(data, actions) {
+						return actions.order.create({
+							purchase_units : [ {
+								amount : {
+									value : '25.0',
+									currency_code : 'CAD'
+								}
+							} ]
+						});
+					},
+					onApprove : function(data, actions) {
+						return actions.order.capture().then(
+								function(details) {
+									alert('Transaction completed by '
+											+ details.payer.name.given_name);
+									// Call your server to save the transaction
+									return fetch('/Membership/Pro', {
+										method : 'post',
+										headers : {
+											'content-type' : 'application/json'
+										},
+										body : JSON.stringify({
+											orderID : data.orderID,
+											m : 'Pro'
+										})
+									});
+								});
+					}
+				}).render('#paypal-button-container2');
+	</script>
+
+	<script>
+		paypal.Buttons(
+				{
+					createOrder : function(data, actions) {
+						return actions.order.create({
+							purchase_units : [ {
+								amount : {
+									value : '50.0',
+									currency_code : 'CAD'
+								}
+							} ]
+						});
+					},
+					onApprove : function(data, actions) {
+						return actions.order.capture().then(
+								function(details) {
+									alert('Transaction completed by '
+											+ details.payer.name.given_name);
+									// Call your server to save the transaction
+									return fetch('/Membership/Premium', {
+										method : 'post',
+										headers : {
+											'content-type' : 'application/json'
+										},
+										body : JSON.stringify({
+											orderID : data.orderID,
+											m : 'Premium'
+										})
+									});
+								});
+					}
+				}).render('#paypal-button-container3');
+	</script>
+</body>
+</html>
