@@ -1,5 +1,3 @@
 # TestBrain the online learning center
-The web-Application built using Spring boot and thymeleafe.
-This system uses the concept of Spring MVC, Spring Security, Restful-Web Services, Lombok, PayPal payment gateway integration 
-and Database integration using MySql JDBC.
-This system is built for online examination system.
+This is an Online Examination web-Application built using <b> Spring boot and thymeleafe</b>.
+  <br/>This system uses the concept of <ul><li>Spring MVC</li><li> Spring Security</li><li> Restful-Web Services</li><li> Lombok</li><li> PayPal payment gateway integration</li> <li>and Database integration using MySql JDBC</li></ul>
